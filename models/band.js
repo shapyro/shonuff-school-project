@@ -21,14 +21,11 @@ module.exports = (sequelize, DataTypes) => {
         len: [2]
       }
     }
-  },{
-    classMethods: {
-      associate: function (models) {
-        // associations defined here
-        models.Band.hasMany(models.Show)
-        models.Show.belongsTo(models.Band)
-      }
-    }
   });
+
+  Band.associate = function(models) {
+    models.Band.hasMany(models.Show, {as: 'Shows', foreignKey: 'band_id'});
+  };
+
   return Band;
 }

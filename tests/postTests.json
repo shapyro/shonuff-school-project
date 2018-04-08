@@ -20,7 +20,7 @@
 }
 
 // CREATE a show
-// localhost:8080/api/show
+// localhost:8080/api/shows
 {
 	"name": "The Daptone Show",
 	"venue_id": 1,
@@ -28,3 +28,4 @@
   "date": "4/20/18",
   "showtime": "12:00"
 }
+

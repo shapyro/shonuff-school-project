@@ -24,5 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     showtime: DataTypes.TIME
   });
+
+  Show.associate = function(models) {
+    models.Show.belongsTo(models.Band, {as: 'Bands', foreignKey: 'band_id'});
+    models.Show.belongsTo(models.Venue, {as: 'Venues', foreignKey: 'band_id'});
+  };
+
   return Show;
 }

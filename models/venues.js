@@ -23,14 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     street: {
       type: DataTypes.STRING
     }
-  },{
-    classMethods: {
-      associate: function (models) {
-        // associations defined here
-        models.Venue.hasMany(models.Show);
-        models.Show.belongsTo(models.Venue);
-      }
-    }
   });
+
+  Venue.associate = function(models) {
+    models.Venue.hasMany(models.Show, {as: 'Shows', foreignKey: 'venue_id'});
+  };
+
   return Venue;
 }

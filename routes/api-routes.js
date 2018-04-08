@@ -7,8 +7,20 @@ module.exports = function(app) {
   //===================================================================
   // Get all shows
   app.get("/api/shows", function(req, res) {
-    //console.log(req.user.uid);
-    db.Show.findAll({})
+    db.Show.findAll({
+      include: [
+        {
+          model: db.Band,
+          as: 'Bands',
+          required: true
+        },
+        {
+          model: db.Venue,
+          as: 'Venues',
+          required: true
+        }
+      ]
+    })
     .then(function(dbShow) {
       res.json(dbShow);
     });
