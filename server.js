@@ -1,7 +1,7 @@
 var express = require('express')
-var methodOverride = require('method-override')
 var app = express()
 var bodyParser = require('body-parser')
+var methodOverride = require("method-override");
 
 var PORT = process.env.PORT || 8080;
 
@@ -16,21 +16,19 @@ app.use(bodyParser.json());
 // Static directory
 app.use(express.static("public"));
 
-var exphbs = require("express-handlebars");
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
+// db
+var db = require("./models");
 
 // Routes
 // =============================================================
-var routes = require("./controllers/burgers_controller.js")
-
-app.use(routes);
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+db.sequelize.sync({force: true}).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });

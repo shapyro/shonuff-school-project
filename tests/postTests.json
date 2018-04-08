@@ -1,0 +1,30 @@
+// CREATE a band
+// localhost:8080/api/bands
+
+{
+	"name": "Budos Band",
+	"description": "AfroFunk Beat",
+	"bio": "",
+	"city": "Brooklyn",
+	"state": "NY"
+}
+
+// CREATE a venue
+// localhost:8080/api/venues
+{
+	"name": "Daptone Records",
+	"city": "Brooklyn",
+  "state": "NY",
+  "zip": 11206,
+  "street": "115 Troutman"
+}
+
+// CREATE a show
+// localhost:8080/api/show
+{
+	"name": "The Daptone Show",
+	"venue_id": 1,
+  "band_id": 1,
+  "date": "4/20/18",
+  "showtime": "12:00"
+}
