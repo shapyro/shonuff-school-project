@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Band.associate = function(models) {
     models.Band.hasMany(models.Show, {as: 'Shows', foreignKey: 'band_id'});
+    models.Band.belongsToMany(models.User, {through: 'Favorites', foreignKey: 'band_id'});
   };
 
   return Band;

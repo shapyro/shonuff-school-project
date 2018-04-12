@@ -1,6 +1,12 @@
 //creating the user model
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
+    user_id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+      allowNull: false,
+      unique: true,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -24,20 +30,11 @@ module.exports = (sequelize, DataTypes) => {
         isInt: true
       }
     }
-  }, {
-    classMethods: {
-      associate: function (models) {
-        // associations defined here
-        models.User.hasMany(models.Friends);
-        models.Friends.belongsToMany(models.User);
-        models.User.hasMany(models.Favorites);
-        models.Favorites.belongsTo(models.User);
-        models.User.hasMany(models.SeeSaw);
-        models.SeeSaw.belongsTo(models.User);
-        models.User.hasMany(models.Messages);
-        models.Messages.belongsTo(models.User);
-      }
-    }
   });
+
+  // User.associate = function(models) {
+  //   models.User.belongsToMany(models.Friends, {through: 'Friendship', foreignKey: 'user_id'});
+  // };
+
   return User;
 }

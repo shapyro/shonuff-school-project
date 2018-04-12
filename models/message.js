@@ -1,21 +1,12 @@
 //creating the Messages model
 module.exports = (sequelize, DataTypes) => {
   var Message = sequelize.define('Message', {
-    fromUID: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Users',
-        key: 'id'
-      }
-    },
-    toUID: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Users',
-        key: 'id'
-      }
-    },
-    text: DataTypes.STRING
+    text: DataTypes.TEXT
   });
+
+  Message.associate = function(models) {
+    models.Message.belongsToMany(models.User, {through: 'Conversations', foreignKey: 'messenger_id'});
+  };
+
   return Message;
 }
