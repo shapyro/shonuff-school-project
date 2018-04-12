@@ -1,4 +1,4 @@
-//creating the shows seen model (SeeSaws)
+//creating the shows seen model (BeenThere)
 module.exports = (sequelize, DataTypes) => {
   var BeenThere = sequelize.define('BeenThere', {
     attended: {

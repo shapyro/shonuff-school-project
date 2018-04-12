@@ -1,4 +1,5 @@
-var db = require('../models')
+const router = require('express').Router();
+const db = require('../../models')
 const axios = require('axios')
 const cheerio = require("cheerio");
 

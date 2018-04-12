@@ -32,9 +32,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  // User.associate = function(models) {
-  //   models.User.belongsToMany(models.Friends, {through: 'Friendship', foreignKey: 'user_id'});
-  // };
-
   return User;
 }
