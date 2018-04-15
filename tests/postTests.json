@@ -29,3 +29,22 @@
   "showtime": "12:00"
 }
 
+// CREATE a like
+// localhost:8080/api/likes
+{
+	"like": true,
+	"show_id": 1,
+  "user_id": 1
+}
+
+// CREATE a user
+// localhost:8080/api/shows
+{
+  "user_id": 1,
+  "username": "friendly",
+  "name": "friend",
+  "city": "Austin",
+  "state": "TX",
+  "zip": 78753
+}
+

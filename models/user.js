@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
-    username: {
+    nickname: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -29,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         isInt: true
       }
-    }
+    },
+    picture: DataTypes.STRING
   });
 
   return User;

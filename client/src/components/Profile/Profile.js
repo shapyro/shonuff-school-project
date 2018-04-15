@@ -8,6 +8,7 @@ class Profile extends Component {
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
       getProfile((err, profile) => {
+        console.log(profile)
         this.setState({ profile });
       });
     } else {

@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [2]
       }
-    }
+    },
+    votes: DataTypes.INTEGER
   });
 
   Band.associate = function(models) {

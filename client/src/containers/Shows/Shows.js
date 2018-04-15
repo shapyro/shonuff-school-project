@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class Shows extends Component {
   login() {
     this.props.auth.login();
   }
@@ -11,7 +11,7 @@ class Home extends Component {
         {
           isAuthenticated() && (
               <h4>
-                You are logged in!
+                View some Stuff Here
               </h4>
             )
         }
@@ -34,4 +34,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Shows;

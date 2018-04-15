@@ -1,3 +1,73 @@
 .btn-margin {
   margin: 7px 3px;
 }
+.btn {
+  font-family: 'Questrial', sans-serif;
+}
+
+.btn {
+  color: #333;
+  /* background-color: #fff;
+  border-color: #ccc; */
+  border-color: transparent;
+  transition: .1s ease;
+  color: #f3f3f3;
+  background: hsla(0,0%,100%,.3);
+}
+
+.btn:hover {
+  color: #333;
+  background-color: lightgrey;
+  /* border-color: slategrey; */
+}
+
+.bands {
+  float: left;
+}
+.shows {
+  float: left;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.navbar-default {
+  opacity: 0.75;
+  background: black;
+  border: none;
+}
+
+.navbar > .container-fluid .navbar-brand {
+  /* margin: 0; */
+  margin-left: 20%;
+}
+
+.navbar-brand {
+  float: none;
+  /* font-family: 'Cookie', cursive; */
+  font-family: 'Pacifico', cursive;
+  font-size: 24px;  
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: white;
+}
+.nav-header {
+  width: 100%
+}
+
+
+.profile {
+  float: right;
+}
+.logout {
+  float: right;
+}
+
+.login {
+  float: right;
+}
+.add {
+  float: right;
+}

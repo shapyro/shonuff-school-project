@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
-import Auth from './Auth/Auth.js';
+import { Navbar, Button, FormGroup, FormControl, Header } from 'react-bootstrap';
+import Auth from './components/Auth/Auth.js';
+import MainHead from './containers/MainHead/MainHead'
+import Main from './containers/Main/Main.js'
 import './App.css';
 
 class App extends Component {
@@ -22,26 +24,49 @@ class App extends Component {
     return (
       <div>
         <Navbar fluid>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="#">Auth0 - React</a>
-            </Navbar.Brand>
+          <Navbar.Header className="nav-header">
+            {/* <Navbar.Brand className="brand">
+              <a href="#">:)</a>
+            </Navbar.Brand> */}
             <Button
               bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
+              className="btn-margin bands"
+              onClick={this.goTo.bind(this, 'bands')}
             >
-              Home
+              Bands
             </Button>
             {
-              !isAuthenticated() && (
+              // isAuthenticated() && (
+                <Button
+                  bsStyle="primary"
+                  className="btn-margin shows"
+                  onClick={this.goTo.bind(this, 'shows')}
+                >
+                  Shows
+                </Button>
+              // )
+            }
+            {
+            <Navbar.Form pullLeft>
+              <FormGroup>
+                <FormControl type="text" placeholder="Search" />
+              </FormGroup>{' '}
+              <Button type="submit">Submit</Button>
+            </Navbar.Form>
+            }
+            {
+              <Navbar.Brand className="brand">
+                <a href="#">Shonuff</a>
+              </Navbar.Brand>
+            }
+            {
+              isAuthenticated() && (
                   <Button
-                    id="qsLoginBtn"
                     bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.login.bind(this)}
+                    className="btn-margin add"
+                    onClick={this.goTo.bind(this, 'add')}
                   >
-                    Log In
+                    +
                   </Button>
                 )
             }
@@ -49,26 +74,14 @@ class App extends Component {
               isAuthenticated() && (
                   <Button
                     bsStyle="primary"
-                    className="btn-margin"
+                    className="btn-margin profile"
                     onClick={this.goTo.bind(this, 'profile')}
                   >
                     Profile
                   </Button>
                 )
             }
-            {
-              isAuthenticated() && (
-                  <Button
-                    id="qsLogoutBtn"
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.logout.bind(this)}
-                  >
-                    Log Out
-                  </Button>
-                )
-            }
-            {
+            {/* {
               isAuthenticated() &&  userHasScopes(['write:messages']) && (
                 <Button
                   bsStyle="primary"
@@ -78,20 +91,47 @@ class App extends Component {
                   Admin
                 </Button>
               )
-            }
-            {
+            } */}
+            {/* {
               isAuthenticated() && (
                 <Button
                   bsStyle="primary"
                   className="btn-margin"
-                  onClick={this.goTo.bind(this, 'view')}
+                  onClick={this.goTo.bind(this, 'user')}
                 >
-                  View
+                  CreateProfile
                 </Button>
               )
+            } */}
+            {
+              !isAuthenticated() && (
+                  <Button
+                    id="qsLoginBtn"
+                    bsStyle="primary"
+                    className="btn-margin login"
+                    onClick={this.login.bind(this)}
+                  >
+                    Log In
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    id="qsLogoutBtn"
+                    bsStyle="primary"
+                    className="btn-margin logout"
+                    onClick={this.logout.bind(this)}
+                  >
+                    Log Out
+                  </Button>
+                )
             }
           </Navbar.Header>
         </Navbar>
+        <MainHead/>
+        <Main/>
+
       </div>
     );
   }

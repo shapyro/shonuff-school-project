@@ -1,16 +1,22 @@
 import React from 'react';
 import { Redirect, Route, Router } from 'react-router-dom';
 import App from './App';
-import Home from './Home/Home';
-import Profile from './Profile/Profile';
-import Ping from './Ping/Ping';
-import Admin from './Admin/Admin';
-import View from './View/View';
-import Callback from './Callback/Callback';
-import Auth from './Auth/Auth';
+import Home from './components/Home/Home';
+import Profile from './components/Profile/Profile';
+import Ping from './components/Ping/Ping';
+import Admin from './components/Admin/Admin';
+import Shows from './containers/Shows/Shows';
+import Main from './containers/Main/Main';
+import Bands from './containers/Bands/Bands'
+import CreateProfile from './components/CreateProfile/CreateProfile';
+import Callback from './components/Callback/Callback';
+import Auth from './components/Auth/Auth';
 import history from './history';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 
 const auth = new Auth();
+const store = configureStore();
 
 const handleAuthentication = ({location}) => {
   if (/access_token|id_token|error/.test(location.hash)) {
@@ -20,6 +26,7 @@ const handleAuthentication = ({location}) => {
 
 export const makeMainRoutes = () => {
   return (
+    <Provider store={store}>
       <Router history={history}>
         <div>
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
@@ -38,11 +45,18 @@ export const makeMainRoutes = () => {
               <Ping auth={auth} {...props} />
             )
           )} />
-          <Route path="/view" render={(props) => (
+          <Route path="/shows" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/home"/>
             ) : (
-              <View auth={auth} {...props} />
+              <Shows auth={auth} {...props} />
+            )
+          )} />
+          <Route path="/user" render={(props) => (
+            !auth.isAuthenticated() ? (
+              <Redirect to="/home"/>
+            ) : (
+              <CreateProfile auth={auth} {...props} />
             )
           )} />
           <Route path="/admin" render={(props) => (
@@ -52,11 +66,26 @@ export const makeMainRoutes = () => {
               <Admin auth={auth} {...props} />
             )
           )} />
+          <Route path="/main" render={(props) => (
+            !auth.isAuthenticated() ? (
+              <Redirect to="/home"/>
+            ) : (
+              <Main auth={auth} {...props} />
+            )
+          )} />
+          <Route path="/bands" render={(props) => (
+            !auth.isAuthenticated() ? (
+              <Redirect to="/home"/>
+            ) : (
+              <Bands auth={auth} {...props} />
+            )
+          )} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 
           }}/>
         </div>
       </Router>
+    </Provider>
   );
 }

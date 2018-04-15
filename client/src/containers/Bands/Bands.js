@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class View extends Component {
+class Bands extends Component {
   login() {
     this.props.auth.login();
   }
@@ -11,7 +11,8 @@ class View extends Component {
         {
           isAuthenticated() && (
               <h4>
-                View some Stuff Here
+                You are logged in!
+                Here are some Bands!
               </h4>
             )
         }
@@ -34,4 +35,4 @@ class View extends Component {
   }
 }
 
-export default View;
+export default Bands;

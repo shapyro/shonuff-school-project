@@ -22,13 +22,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATEONLY,
       allowNull: false
     },
-    showtime: DataTypes.TIME
+    showtime: DataTypes.TIME,
+    votes: DataTypes.INTEGER
   });
 
   Show.associate = function(models) {
     models.Show.belongsTo(models.Band, {as: 'Bands', foreignKey: 'band_id'});
     models.Show.belongsTo(models.Venue, {as: 'Venues', foreignKey: 'band_id'});
-    models.Show.belongsToMany(models.User, {through: 'BeenThere', foreignKey: 'show_id'});
+    models.Show.belongsToMany(models.User, {through: 'Likes', foreignKey: 'show_id'});
   };
 
   return Show;
