@@ -4,7 +4,7 @@ module.exports = {
   findAll: function(req, res) {
     db.Band.findAll({})
     .then(dbBand => res.json(dbBand))
-    .catch(err => res.status(422).json(err));; 
+    .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
     db.Band.findAll({
@@ -13,7 +13,7 @@ module.exports = {
       }
     })
     .then(dbBand => res.json(dbBand))
-    .catch(err => res.status(422).json(err));; 
+    .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
     db.Band.create({

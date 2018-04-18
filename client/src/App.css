@@ -15,7 +15,8 @@
   background: hsla(0,0%,100%,.3);
 }
 
-.btn:hover {
+.btn:hover,
+.btn:active {
   color: #333;
   background-color: lightgrey;
   /* border-color: slategrey; */
@@ -44,7 +45,8 @@
 }
 
 .navbar-brand {
-  float: none;
+  position: absolute;
+  left: 30%;
   /* font-family: 'Cookie', cursive; */
   font-family: 'Pacifico', cursive;
   font-size: 24px;  
@@ -68,6 +70,68 @@
 .login {
   float: right;
 }
-.add {
+/* menuitem {
+  position: unset;
   float: right;
 }
+.add {
+  position: unset;
+  float: right;
+} */
+
+.makeitwork {
+  position: relative;
+  right: 50%;
+}
+
+.add {
+    /* position: absolute;
+    right: 10.45%; */
+    float: right;
+    margin-top: 7px;
+    margin-right: 3px;
+} 
+
+.add::before,
+.add::after,
+.btn::before,
+.btn::after,
+{
+  border: none;
+}
+
+.arrow {
+  visibility: hidden;
+  display: none;
+  margin: 0;
+}
+
+.popover {
+  position: fixed;
+  left: 80%;
+  width: 200px;
+  top: 50px;
+  text-align: center;
+  margin: 0;
+}
+
+/* .dropdown-menu,
+.dropdown-menu::before,
+.dropdown-menu::after {
+  content: none;
+  display: none;
+} */
+
+/* .popover {
+  height: 100px;
+  width: 100px;
+  position: fixed;
+  background: white;
+  right: 10px;
+  top: 0;
+} */
+
+/* .dropdown-menu {
+
+  float: right;
+} */

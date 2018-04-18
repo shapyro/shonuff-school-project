@@ -23,7 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     showtime: DataTypes.TIME,
-    votes: DataTypes.INTEGER
+    votes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   });
 
   Show.associate = function(models) {

@@ -21,7 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         len: [2]
       }
     },
-    votes: DataTypes.INTEGER
+    votes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   });
 
   Band.associate = function(models) {

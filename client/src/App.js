@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
-import { Navbar, Button, FormGroup, FormControl, Header } from 'react-bootstrap';
+import { Navbar, Button, FormGroup, FormControl, DropdownButton, MenuItem, OverlayTrigger, Popover } from 'react-bootstrap';
 import Auth from './components/Auth/Auth.js';
+import Create from './components/Create/Create'
 import MainHead from './containers/MainHead/MainHead'
 import Main from './containers/Main/Main.js'
 import './App.css';
 
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      createVisible: false
+    }
+  }
+
+  onClick() {
+    this.setState(prevState => ({ createVisible: !prevState.createVisible }));
+  }
+
+
   goTo(route) {
     this.props.history.replace(`/${route}`)
   }
@@ -49,9 +63,13 @@ class App extends Component {
             {
             <Navbar.Form pullLeft>
               <FormGroup>
-                <FormControl type="text" placeholder="Search" />
+              
+                <FormControl type="text" placeholder="Search"  />
+      
               </FormGroup>{' '}
-              <Button type="submit">Submit</Button>
+              <Button type="submit" >
+              <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
+              </Button>
             </Navbar.Form>
             }
             {
@@ -59,17 +77,7 @@ class App extends Component {
                 <a href="#">Shonuff</a>
               </Navbar.Brand>
             }
-            {
-              isAuthenticated() && (
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin add"
-                    onClick={this.goTo.bind(this, 'add')}
-                  >
-                    +
-                  </Button>
-                )
-            }
+
             {
               isAuthenticated() && (
                   <Button
@@ -127,6 +135,19 @@ class App extends Component {
                   </Button>
                 )
             }
+            {
+              isAuthenticated() && (
+
+                  <Button onClick={()=>this.onClick()} className="button glyphicon glyphicon-plus add">
+
+                    {
+                      this.state.createVisible ? <Create onClick={this.state.createVisible = false} /> : null
+                    }
+               
+                  </Button>
+               
+              )
+            }
           </Navbar.Header>
         </Navbar>
         <MainHead/>
@@ -138,3 +159,5 @@ class App extends Component {
 }
 
 export default App;
+
+

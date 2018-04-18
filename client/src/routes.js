@@ -1,13 +1,14 @@
 import React from 'react';
 import { Redirect, Route, Router } from 'react-router-dom';
 import App from './App';
-import Home from './components/Home/Home';
+// import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Ping from './components/Ping/Ping';
 import Admin from './components/Admin/Admin';
 import Shows from './containers/Shows/Shows';
 import Main from './containers/Main/Main';
 import Bands from './containers/Bands/Bands'
+import Create from './components/Create/Create'
 import CreateProfile from './components/CreateProfile/CreateProfile';
 import Callback from './components/Callback/Callback';
 import Auth from './components/Auth/Auth';
@@ -30,7 +31,7 @@ export const makeMainRoutes = () => {
       <Router history={history}>
         <div>
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
-          <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+          {/* <Route path="/home" render={(props) => <Home auth={auth} {...props} />} /> */}
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/home"/>
@@ -71,6 +72,13 @@ export const makeMainRoutes = () => {
               <Redirect to="/home"/>
             ) : (
               <Main auth={auth} {...props} />
+            )
+          )} />
+          <Route path="/create" render={(props) => (
+            !auth.isAuthenticated() ? (
+              <Redirect to="/home"/>
+            ) : (
+              <Create auth={auth} {...props} />
             )
           )} />
           <Route path="/bands" render={(props) => (

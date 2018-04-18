@@ -1,0 +1,51 @@
+/* .bandPop {
+  height: 100px;
+  width: 100px;
+  position: fixed;
+  top: 50px;
+} */
+
+
+
+.bandPop {
+  border-radius: 5px;
+  /* height: 250px; */
+  position: absolute;
+  top: 41px;
+  right: -172px;
+  background: white;
+  width: 300px;
+}
+
+.create-header {
+  font-size: large;
+  border-bottom: 1px solid darkgrey;
+  padding-top: 15px;
+  margin: auto;
+  height: 50px;
+  width: 275px;
+}
+
+.close-x,
+.close-x:hover {
+  color: black;
+  float: right;
+  text-decoration: none;
+}
+.add-stuff {
+  font-family: 'Monoton', cursive;
+  height: 95px;
+  padding-top: 20px;
+  font-size: 40px;
+}
+
+.add-stuff:hover {
+  color: white;
+  background: grey;
+}
+
+.band-form {
+  text-align: left;
+  margin: 5%;
+}
+
